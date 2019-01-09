@@ -1,22 +1,43 @@
-import * as express from 'express'
+import * as bodyParser from 'body-parser';
+import * as express from 'express';
+import * as mongoose from 'mongoose';
+import Controller from './interfaces/controller.interface';
 
 class App {
-  public express
+  public app: express.Application;
 
-  constructor () {
-    this.express = express()
-    this.mountRoutes()
+  constructor(controllers: Controller[]) {
+    this.app = express();
+
+    this.connectToTheDatabase();
+    this.initializeMiddlewares();
+    this.initializeControllers(controllers);
   }
 
-  private mountRoutes (): void {
-    const router = express.Router()
-    router.get('/', (req, res) => {
-      res.json({
-        message: 'Hello World!'
-      })
-    })
-    this.express.use('/', router)
+  public listen() {
+    this.app.listen(process.env.PORT, () => {
+      console.log(`App listening on the port ${process.env.PORT}`);
+    });
+  }
+
+  private initializeMiddlewares() {
+    this.app.use(bodyParser.json());
+  }
+
+  private initializeControllers(controllers: Controller[]) {
+    controllers.forEach((controller) => {
+      this.app.use('/', controller.router);
+    });
+  }
+
+  private connectToTheDatabase() {
+    const {
+      MONGO_USER,
+      MONGO_PASSWORD,
+      MONGO_PATH,
+    } = process.env;
+    mongoose.connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`);
   }
 }
 
-export default new App().express
+export default App;
