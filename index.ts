@@ -6,8 +6,12 @@ const app = express();
 
 app.use(bodyParser.json());
 
-router.get('/hello', (request, response) => {
-  response.send('Hello world!');
+app.get('/', (request, response) => {
+  response.send({
+    hostname: request.hostname,
+    path: request.path,
+    method: request.method,
+  });
 });
 
 app.use('/api', router);
