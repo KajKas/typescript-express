@@ -11,4 +11,4 @@ function validateEnv() {
     });
 }
 
-export default validateEnv()
+export default validateEnv
