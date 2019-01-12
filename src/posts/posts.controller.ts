@@ -44,10 +44,13 @@ class PostsController implements Controller {
             });
     }
 
-    private createPost = async (request: express.Request, response: express.Response) => {
+    private createPost = (request: express.Request, response: express.Response) => {
         const postData: Post = request.body;
         const createdPost = new this.post(postData);
-        const savedPost = createdPost.save();
+        createdPost.save()
+            .then((savedPost) => {
+                response.send(savedPost);
+            });
     }
 
     private deletePost = (request: express.Request, response: express.Response) => {
