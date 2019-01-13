@@ -1,5 +1,6 @@
 {
   "compileOnSave": true,
+  "experimentalDecorators": true,
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
