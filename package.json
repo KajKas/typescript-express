@@ -25,13 +25,19 @@
     "@types/express": "^4.16.0",
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.12.18",
+    "bcrypt": "^3.0.3",
     "body-parser": "^1.18.3",
     "class-transformer": "^0.2.0",
     "class-validator": "^0.9.1",
     "envalid": "^4.1.4",
     "express": "^4.16.4",
     "mongoose": "^5.4.3",
+    "n": "^2.1.12",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/jsonwebtoken": "^8.3.0"
   }
 }
