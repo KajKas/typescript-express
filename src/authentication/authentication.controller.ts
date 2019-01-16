@@ -56,4 +56,4 @@ class AuthenticationController implements Controller {
     }
 }
 
-export default AuthenticationController;~~
+export default AuthenticationController;
