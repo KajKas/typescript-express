@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
+    "@types/cookie-parser": "^1.4.1",
     "@types/jsonwebtoken": "^8.3.0"
   }
 }
